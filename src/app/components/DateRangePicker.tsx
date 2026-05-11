@@ -34,8 +34,16 @@ export default function DateRangePickerComponent({
           rangeClasses,
         )}
       >
-        <DatePickerComponent selected={from} setDate={setFrom} />
-        <DatePickerComponent selected={to} setDate={setTo} />
+        <DatePickerComponent
+          selected={from}
+          placeholderValue="From"
+          setDate={setFrom}
+        />
+        <DatePickerComponent
+          selected={to}
+          placeholderValue="To"
+          setDate={setTo}
+        />
       </div>
     </div>
   );
