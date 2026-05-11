@@ -4,7 +4,7 @@ import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useState } from "react";
 import ExpenseInterface from "@/app/interfaces/expense/model";
 import CloseIcon from "@/assets/icons/close-icon.svg";
-import DeleteForm from "@/app/expense/delete/components/form";
+import DeleteForm from "@/app/expense/delete/components/Form";
 
 export default function DeleteExpenseModal({
   expense,

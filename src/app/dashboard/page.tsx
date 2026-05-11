@@ -2,14 +2,14 @@ import clsx from "clsx";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { categoryList, getExpenses } from "@/lib/dashboardData";
-import formatDate from "@/lib/formatDate";
+import { categoryList, getExpenses } from "@/lib/dashboard-data";
+import formatDate from "@/lib/format-date";
 import DashboardPaginationInterface from "@/app/interfaces/dashboard-pagination";
-import ExpenseTotals from "./components/expense-totals";
-import UpdateExpenseModal from "./components/update-expense-modal";
-import DeleteExpenseModal from "./components/delete-expense-modal";
-import Pagination from "./components/pagination";
-import Filters from "./components/filters";
+import ExpenseTotals from "./components/ExpenseTotals";
+import UpdateExpenseModal from "./components/UpdateExpenseModal";
+import DeleteExpenseModal from "./components/DeleteExpenseModal";
+import Pagination from "./components/Pagination";
+import Filters from "./components/Filters";
 
 export default async function DashboardPage({
   searchParams,
