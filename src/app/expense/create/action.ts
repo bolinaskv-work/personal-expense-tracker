@@ -3,7 +3,7 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import FormStateError from "@/app/interfaces/expense/form-state-error";
 
 type FormState = {

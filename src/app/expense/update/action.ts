@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { prisma } from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 
 const expenseSchema = z.object({
   amount: z.coerce.number().positive("Amount must be greater than 0."),

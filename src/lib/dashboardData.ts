@@ -1,7 +1,7 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
+import prisma from "@/lib/prisma";
 
 const PAGE_SIZE = 2;
 
