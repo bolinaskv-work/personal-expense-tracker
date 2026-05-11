@@ -3,7 +3,7 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useState } from "react";
 import ExpenseInterface from "@/app/interfaces/expense/model";
-import CloseIcon from "@/assets/icons/close-icon.svg";
+import CloseIcon from "@/assets/components/CloseIcon";
 import DeleteForm from "@/app/expense/delete/components/Form";
 
 export default function DeleteExpenseModal({
@@ -39,7 +39,7 @@ export default function DeleteExpenseModal({
                   onClick={closeModal}
                   className="absolute right-0 rounded-full bg-white text-black hover:bg-blue-500 hover:text-white hover:outline-3 p-1 cursor-pointer"
                 >
-                  <CloseIcon className="size-6" />
+                  <CloseIcon className="w-6 h-6" />
                 </span>
                 <h1 className="font-bold text-center text-2xl">
                   DELETE EXPENSE

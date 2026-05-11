@@ -4,8 +4,8 @@ import { useActionState } from "react";
 import { createExpense } from "../action";
 import { redirect } from "next/navigation";
 import FormStateError from "@/app/interfaces/expense/form-state-error";
-import NoticeIcon from "@/assets/icons/notice-icon.svg";
-import BackIcon from "@/assets/icons/back-icon.svg";
+import NoticeIcon from "@/assets/components/NoticeIcon";
+import BackIcon from "@/assets/components/BackIcon";
 
 const initialState = {
   errors: {} as FormStateError,
@@ -31,7 +31,7 @@ export default function CreateForm() {
               p-1 cursor-pointer
             "
           >
-            <BackIcon className="size-6" />
+            <BackIcon className="w-6 h-6" />
           </span>
           <h1 className="font-bold text-center text-2xl">CREATE EXPENSE</h1>
         </div>
@@ -51,8 +51,7 @@ export default function CreateForm() {
 
             {state.errors?.amount && (
               <div className="flex gap-x-1 w-full rounded bg-gray-300 text-sm text-red-700 p-1 mt-1">
-                <NoticeIcon className="size-5 text-red-700" />{" "}
-                {state.errors?.amount}
+                <NoticeIcon className="w-5 h-5" /> {state.errors?.amount}
               </div>
             )}
           </div>
@@ -72,8 +71,7 @@ export default function CreateForm() {
 
             {state.errors?.category && (
               <div className="flex gap-x-1 w-full rounded bg-gray-300 text-sm text-red-700 p-1 mt-1">
-                <NoticeIcon className="size-5 text-red-700" />{" "}
-                {state.errors?.category}
+                <NoticeIcon className="w-5 h-5" /> {state.errors?.category}
               </div>
             )}
           </div>
@@ -90,7 +88,7 @@ export default function CreateForm() {
 
             {state.errors?.description && (
               <div className="flex gap-x-1 w-full rounded bg-gray-300 text-sm text-red-700 p-1">
-                <NoticeIcon className="size-5 text-red-700" />{" "}
+                <NoticeIcon className="w-5 h-5 text-red-700" />{" "}
                 {state.errors?.description}
               </div>
             )}

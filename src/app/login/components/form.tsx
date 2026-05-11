@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import NoticeIcon from "@/assets/icons/notice-icon.svg";
+import NoticeIcon from "@/assets/components/NoticeIcon";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -70,7 +70,7 @@ export default function LoginForm() {
 
           {errorMessage && (
             <div className="flex gap-x-1 w-full rounded bg-gray-300 text-sm text-red-700 justify-center p-2">
-              <NoticeIcon className="size-5 text-red-700" /> {errorMessage}
+              <NoticeIcon className="w-5 h-5" /> {errorMessage}
             </div>
           )}
         </form>

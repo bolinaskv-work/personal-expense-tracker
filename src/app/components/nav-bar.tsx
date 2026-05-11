@@ -8,7 +8,7 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import ProfileIcon from "@/assets/icons/profile-icon.svg";
+import ProfileIcon from "@/assets/components/ProfileIcon";
 import Logout from "./logout-button";
 
 const navigation = [
@@ -90,7 +90,7 @@ export default function NavBar() {
               >
                 <span className="absolute -inset-1.5" />
                 <span className="sr-only">Open user menu</span>
-                <ProfileIcon className="size-8 rounded-full bg-white" />
+                <ProfileIcon className="w-8 h-8 rounded-full bg-white text-black" />
               </MenuButton>
 
               <MenuItems

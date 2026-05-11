@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { updateExpense } from "../action";
 import ExpenseInterface from "@/app/interfaces/expense/model";
-import NoticeIcon from "@/assets/icons/notice-icon.svg";
+import NoticeIcon from "@/assets/components/NoticeIcon";
 
 export default function UpdateForm({
   expense,
@@ -55,7 +55,7 @@ export default function UpdateForm({
 
           {errors?.amount && (
             <div className="flex gap-x-1 w-full rounded bg-gray-300 text-sm text-red-700 p-1 mt-1">
-              <NoticeIcon className="size-5 text-red-700" /> {errors?.amount}
+              <NoticeIcon className="w-5 h-5" /> {errors?.amount}
             </div>
           )}
         </div>
@@ -76,7 +76,7 @@ export default function UpdateForm({
 
           {errors?.category && (
             <div className="flex gap-x-1 w-full rounded bg-gray-300 text-sm text-red-700 p-1 mt-1">
-              <NoticeIcon className="size-5 text-red-700" /> {errors?.category}
+              <NoticeIcon className="w-5 h-5" /> {errors?.category}
             </div>
           )}
         </div>
@@ -94,8 +94,7 @@ export default function UpdateForm({
 
           {errors?.description && (
             <div className="flex gap-x-1 w-full rounded bg-gray-300 text-sm text-red-700 p-1">
-              <NoticeIcon className="size-5 text-red-700" />{" "}
-              {errors?.description}
+              <NoticeIcon className="w-5 h-5" /> {errors?.description}
             </div>
           )}
         </div>
