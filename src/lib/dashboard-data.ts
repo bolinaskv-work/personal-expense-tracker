@@ -2,8 +2,9 @@
 
 import { Prisma } from "@prisma/client";
 import prisma from "@/lib/prisma";
+import config from "@/config/config";
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = config.pageSize;
 
 export const getExpenses = async (params: {
   page?: string;

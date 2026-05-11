@@ -11,6 +11,7 @@ const env = (name: string): string => {
 const config = {
   nextauthSecret: env("NEXTAUTH_SECRET"),
   defaultPassword: env("DEFAULT_PASSWORD"),
+  pageSize: Number(env("PAGE_SIZE")),
 };
 
 export default config;
