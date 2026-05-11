@@ -4,7 +4,7 @@ import "./globals.css";
 import { usePathname, redirect } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import Providers from "./provider";
-import NavBar from "./components/nav-bar";
+import NavBar from "./components/NavBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -2,6 +2,8 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import SelectOptionComponent from "@/app/components/Select";
+import DateRangePickerComponent from "@/app/components/DateRangePicker";
 
 export default function Filters({ categoryList }: { categoryList: string[] }) {
   const router = useRouter();
@@ -11,9 +13,13 @@ export default function Filters({ categoryList }: { categoryList: string[] }) {
   const fromParam = searchParams?.get("from") ?? "";
   const toParam = searchParams?.get("to") ?? "";
 
-  const [category, setCategory] = useState(categoryParam);
-  const [from, setFrom] = useState(fromParam);
-  const [to, setTo] = useState(toParam);
+  const parseDate = (value: string) => (value ? new Date(value) : null);
+  const formatDate = (date: Date | null) =>
+    date ? date.toISOString().split("T")[0] : "";
+
+  const [category, setCategory] = useState<string>(categoryParam);
+  const [from, setFrom] = useState<Date | null>(parseDate(fromParam));
+  const [to, setTo] = useState<Date | null>(parseDate(toParam));
 
   const applyFilters = () => {
     const params = new URLSearchParams(searchParams?.toString());
@@ -22,14 +28,13 @@ export default function Filters({ categoryList }: { categoryList: string[] }) {
     else params.delete("category");
 
     if (from && to) {
-      params.set("from", from);
-      params.set("to", to);
+      params.set("from", formatDate(from));
+      params.set("to", formatDate(to));
     } else {
       params.delete("from");
       params.delete("to");
     }
 
-    // reset pagination when filtering
     params.set("page", "1");
 
     router.push(`/dashboard?${params.toString()}`);
@@ -37,42 +42,24 @@ export default function Filters({ categoryList }: { categoryList: string[] }) {
 
   return (
     <div className="lg:flex gap-2 border rounded p-2 space-y-2 lg:space-y-0 mb-4">
-      <div className="flex">
-        <label className="border border-white bg-white text-black rounded-s-lg p-2 shrink-0">
-          Filter By Category
-        </label>
-        <select
-          className="flex-1 border rounded-e-lg p-2"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="">All</option>
-          {categoryList.map((item, index) => (
-            <option key={index} value={item}>
-              {item}
-            </option>
-          ))}
-          <option value="empty">Empty Record - For Testing</option>
-        </select>
-      </div>
+      <SelectOptionComponent
+        label="Filter By Category"
+        labelClasses="rounded-s-lg"
+        selected={category}
+        selectClasses="rounded-e-lg"
+        options={categoryList}
+        setOption={setCategory}
+      />
 
-      <div className="flex">
-        <label className="border border-white bg-white text-black rounded-s-lg p-2 shrink-0">
-          Filter By Date Range
-        </label>
-        <div className="flex-1 border rounded-e-lg p-2">
-          <input
-            type="date"
-            value={from}
-            onChange={(e) => setFrom(e.target.value)}
-          />
-          <input
-            type="date"
-            value={to}
-            onChange={(e) => setTo(e.target.value)}
-          />
-        </div>
-      </div>
+      <DateRangePickerComponent
+        label="Filter By Date Range"
+        labelClasses="rounded-s-lg"
+        rangeClasses="rounded-e-lg"
+        from={from}
+        to={to}
+        setFrom={setFrom}
+        setTo={setTo}
+      />
 
       <button
         className="

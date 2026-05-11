@@ -1,7 +1,7 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import UserInfo from "@/app/components/user-info";
+import UserInfo from "@/app/components/UserInfo";
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);

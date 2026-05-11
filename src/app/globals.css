@@ -24,3 +24,56 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Dark calendar header */
+.react-datepicker__header {
+  background-color: #111827 !important;
+  border-bottom: 1px solid #374151 !important;
+}
+
+/* Month / year text */
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  color: white !important;
+}
+
+/* Day names (Mon, Tue...) */
+.react-datepicker__day-name {
+  color: #d1d5db !important;
+}
+
+/* Default day */
+.react-datepicker__day {
+  color: white !important;
+}
+
+/* Hover */
+.react-datepicker__day:hover {
+  background-color: #374151 !important;
+}
+
+/* Selected day */
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #4f46e5 !important;
+  color: white !important;
+}
+
+/* Outside month */
+.react-datepicker__day--outside-month {
+  color: #6b7280 !important;
+}
+
+.react-datepicker__input-container input {
+  color: white !important;
+}
+
+.react-datepicker__input-container input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* calendar icon */
+.react-datepicker__input-container .react-datepicker__calendar-icon {
+  filter: invert(1);
+}

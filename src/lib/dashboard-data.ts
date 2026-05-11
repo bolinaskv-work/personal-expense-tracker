@@ -19,16 +19,15 @@ export const getExpenses = async (params: {
     where.category = params.category;
   }
 
-  if (params.from || params.to) {
-    where.createdAt = {};
+  if (params.from && params.to) {
+    const fromDate = new Date(params.from);
+    const toDate = new Date(params.to);
+    toDate.setHours(23, 59, 59, 999);
 
-    if (params.from) {
-      where.createdAt.gte = new Date(params.from);
-    }
-
-    if (params.to) {
-      where.createdAt.lte = new Date(params.to);
-    }
+    where.createdAt = {
+      gte: fromDate,
+      lte: toDate,
+    };
   }
 
   const totalItems = await prisma.expense.count({ where });

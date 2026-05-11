@@ -9,7 +9,7 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import ProfileIcon from "@/assets/components/ProfileIcon";
-import Logout from "./logout-button";
+import Logout from "./LogoutButton";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: true },
