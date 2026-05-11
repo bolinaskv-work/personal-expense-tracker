@@ -1,27 +1,37 @@
-import ExpenseInterface from "@/app/interfaces/expense";
+"use server";
 
-export default function ExpenseTotals({
-  expenses,
-}: {
-  expenses: ExpenseInterface[];
-}) {
+import { prisma } from "@/lib/prisma";
+
+type ResultByCategory = {
+  category: string;
+  total: number;
+};
+
+export default async function ExpenseTotals() {
+  const expenses = await prisma.expense.findMany({
+    include: {
+      user: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
   const totalExpense = expenses.reduce((sum, e) => sum + e.amount, 0);
-  const totalExpenseByCategory = Object.entries(
-    expenses.reduce((result: Record<string, number>, e) => {
+  const totalExpenseByCategory = Object.values(
+    expenses.reduce((result: Record<string, ResultByCategory>, e) => {
       if (!result[e.category]) {
-        result[e.category] = 0;
+        result[e.category] = {
+          category: e.category,
+          total: 0,
+        };
       }
 
-      result[e.category] += e.amount;
+      result[e.category].total += e.amount;
 
       return result;
     }, {}),
-  ).map(([key, value]) => {
-    return {
-      category: key,
-      total: value,
-    };
-  });
+  );
 
   return (
     <div className="border rounded p-5 my-5">

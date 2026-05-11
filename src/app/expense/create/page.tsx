@@ -1,14 +1,14 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import LoginForm from "./components/form";
+import CreateForm from "./components/form";
 
-export default async function LoginPage() {
+export default async function ExpenseCreatePage() {
   const session = await getServerSession(authOptions);
 
-  if (session) {
-    redirect("/dashboard");
+  if (!session) {
+    redirect("/login");
   }
 
-  return <LoginForm />;
+  return <CreateForm />;
 }
