@@ -77,3 +77,7 @@ body {
 .react-datepicker__input-container .react-datepicker__calendar-icon {
   filter: invert(1);
 }
+
+.react-datepicker__tab-loop {
+  position: absolute !important;
+}
